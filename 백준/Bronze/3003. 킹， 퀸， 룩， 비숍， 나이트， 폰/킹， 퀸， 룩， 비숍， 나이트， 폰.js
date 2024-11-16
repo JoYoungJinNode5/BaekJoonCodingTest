@@ -1,12 +1,15 @@
 const fs = require("fs");
-const input = fs.readFileSync(0, "utf-8").toString().trim().split(" ");
+const input = fs
+  .readFileSync(0, "utf-8")
+  .toString()
+  .trim()
+  .split(" ")
+  .map(Number);
 
-const king = input[0] > 1 ? -(input[0] - 1) : 1 - input[0];
-const queen = input[1] > 1 ? -(input[1] - 1) : 1 - input[1];
-const rook = input[2] > 2 ? -(input[2] - 2) : 2 - input[2];
-const bishop = input[3] > 2 ? -(input[3] - 2) : 2 - input[3];
-const knight = input[4] > 2 ? -(input[4] - 2) : 2 - input[4];
-const pawn = input[5] > 8 ? -(input[5] - 8) : 8 - input[5];
-console.log(
-  king + " " + queen + " " + rook + " " + bishop + " " + knight + " " + pawn
-);
+const arr = [1, 1, 2, 2, 2, 8];
+let result = "";
+for (let i = 0; i < arr.length; i++) {
+  result += arr[i] - input[i] + " ";
+}
+
+console.log(result);
